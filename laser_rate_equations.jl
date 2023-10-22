@@ -28,7 +28,7 @@ function integrate(p, ta, tb, Np)
     X0 = [0.000001 + 0.000001im, 0.000001] # initial condition 
     s = LinRange(ta, tb, Np) ./ τp
     prob = ODEProblem(laser!, X0, (0.0, s[end]), p0)
-    sol = solve(prob, RK4())
+    sol = solve(prob, Tsit5())
     sol = sol(s)
     t = s .* τp
     E = sol[1, :]
